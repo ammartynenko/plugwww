@@ -93,5 +93,6 @@ func (s *Server) Run() {
 
 //запуск сервера с поддержкой сертификата
 func (s *Server) RunTLS() {
-
+	s.log.Printf("starting TLS server on `%s`\n", s.cfg.AdressHTTP)
+	s.log.Fatal(http.ListenAndServeTLS(s.cfg.AdressHTTP, s.cfg.CertFile, s.cfg.KeyFile, s.Mux))
 }
